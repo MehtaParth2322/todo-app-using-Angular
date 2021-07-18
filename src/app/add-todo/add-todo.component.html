@@ -1,0 +1,109 @@
+<div class="container">
+  <h1 class="text-center my-3 text-primary">ADD TODO</h1>
+  <div class="form">
+    <form
+      name="todo-form"
+      [formGroup]="checkoutForm"
+      id="todoForm"
+      (ngSubmit)="onSubmit()"
+      class="form"
+    >
+      <div class="flex-a">
+        <label>Title :- </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="What Do You Want to Do..."
+          name="title"
+          formControlName="title"
+        />
+        <p
+          class="text-danger"
+          *ngIf="
+            (this.checkoutForm.controls.title.touched || submitted) &&
+            this.checkoutForm.controls.title.errors?.required
+          "
+        >
+          Tite is required
+        </p>
+        <label>Description :- </label>
+        <textarea
+          type="text"
+          class="form-control"
+          name="description"
+          formControlName="description"
+          placeholder="Enter description"
+        ></textarea>
+        <p
+          class="text-danger"
+          *ngIf="
+            (this.checkoutForm.controls.description.touched || submitted) &&
+            this.checkoutForm.controls.description.errors?.required
+          "
+        >
+          Description is required
+        </p>
+        <label> Start Date :- </label>
+        <input
+          type="date"
+          name="sdate"
+          class="form-control"
+          formControlName="sdate"
+        />
+        <p
+          class="text-danger"
+          *ngIf="
+            (this.checkoutForm.controls.sdate.touched || submitted) &&
+            this.checkoutForm.controls.sdate.errors?.required
+          "
+        >
+          Select Start Date
+        </p>
+        <label> End Date :- </label>
+        <input
+          type="date"
+          name="edate"
+          class="form-control"
+          formControlName="edate"
+        />
+        <p
+          class="text-danger"
+          *ngIf="
+            (this.checkoutForm.controls.edate.touched || submitted) &&
+            this.checkoutForm.controls.edate.errors?.required
+          "
+        >
+          Select End Date
+        </p>
+        <label for="cars">Choose a Status:</label>
+        <select
+          id="Status"
+          name="status"
+          class="form-control"
+          formControlName="status"
+        >
+          <option value="In-Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending</option>
+        </select>
+        <p
+          class="text-danger"
+          *ngIf="
+            (this.checkoutForm.controls.status.touched || submitted) &&
+            this.checkoutForm.controls.status.errors?.required
+          "
+        >
+          Status is required
+        </p>
+        <div class="my-5">
+          <button class="btn btn-lg btn-primary mx-3" id="submit"> 
+            Submit
+          </button>
+          <button class="btn btn-warning btn-lg" [routerLink]="['/']">
+            Dashboard
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
